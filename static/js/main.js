@@ -8,4 +8,5 @@ $(document).ready(function() {
     var c = Shape.Circle(event.point, 20);
     c.fillColor = 'green';
     }
+
 });
