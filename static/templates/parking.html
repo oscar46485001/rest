@@ -1,0 +1,52 @@
+<div data-ng-controller="myCtrl">
+<h3>[Packt] Parking</h3>
+    <input
+        type="text"
+        ng-model="criteria"
+        placeholder="What are you looking for?"
+    />
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+        </tr>
+        <th>
+            <a href=""ng-click="field = 'plate'; order=!order">
+                Plate
+            </a>
+        </th>
+        <th>
+            <a href=""ng-click="field = 'color'; order=!order">
+                Color
+            </a>
+        </th>
+        <th>
+            <a href=""ng-click="field = 'entrance'; order=!order">
+                Entrance
+            </a>
+        </th>
+      </thead>
+      <tbody>
+        <!-- Iterating over the cars -->
+        <tr
+      ng-class="{selected: car.selected}"
+      ng-repeat="car in cars | filter:criteria | orderBy:field:order"
+ >
+    <td>
+        <input
+          type="checkbox"
+          ng-model="car.selected"
+        />
+    </td>
+      <td><a href="#/car/{a car.id a}">{a car.plate a}</a></td>
+      <td>{{car.color}}</td>
+      <td>{{car.entrance | date:'dd/MM/yyyy hh:mm'}}</td>
+    </tr>
+      </tbody>
+    </table>
+    <!-- Binding the car object, with plate, to the scope -->
+    <input type="text" ng-model="car.plate"/>
+    <!-- Binding the park function to the click event -->
+    <button ng-click="parkCar(car.plate)">Park</button>
+
+</div>
